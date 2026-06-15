@@ -1,280 +1,143 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Special One | Prity</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;500;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --emerald: #046307;
+            --silver: #E8E8E8;
+            --glass: rgba(255, 255, 255, 0.1);
+        }
 
-<title>For Pritu 🌷</title>
+        body {
+            margin: 0;
+            padding: 0;
+            background: radial-gradient(circle, var(--emerald), #023003);
+            color: var(--silver);
+            font-family: 'Hind Siliguri', sans-serif;
+            overflow-x: hidden;
+        }
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
 
-<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+        /* Glassmorphism Card */
+        .card {
+            background: var(--glass);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 40px 0;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 1.5s ease-out;
+        }
 
-<link rel="stylesheet" href="style.css">
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: #C0C0C0; /* Diamond Silver */
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            color: #50C878; /* Emerald Tint */
+            font-weight: 700;
+        }
+
+        p {
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        .highlight {
+            color: #FFD700;
+            font-weight: bold;
+        }
+
+        /* Stickers & Animations */
+        .sticker {
+            font-size: 3rem;
+            display: block;
+            margin: 15px 0;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .btn {
+            background: linear-gradient(45deg, #50C878, #046307);
+            border: none;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(80, 200, 120, 0.6);
+        }
+
+        .footer-text {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            margin-top: 50px;
+        }
+    </style>
 </head>
-
 <body>
 
-<div class="loader">
-    <div class="heart-loader">💖</div>
-</div>
-
-<div id="hearts"></div>
-
-<!-- PAGE 1 -->
-
-<section class="page hero">
-
-<div class="glass">
-
-<h1>Hey Pritu 🌷</h1>
-
-<p class="typing">
-এই webpage-এ খুব বড় কোনো গল্প নেই।
-শুধু কিছু ছোট ছোট কথা আছে,
-যেগুলো হয়তো কোনো সাধারণ chatbox-এ হারিয়ে যেত।
-</p>
-
-<button onclick="nextPage(1)">
-Open It 💌
-</button>
-
-</div>
-
-</section>
-
-<!-- PAGE 2 -->
-
-<section class="page hidden" id="page2">
-
-<div class="glass">
-
-<h2>Farhana Prity 🌸</h2>
-
-<p>
-তোমার পুরো নামটা সুন্দর,
-কিন্তু ‘Pritu’ বলে ডাকলে কেন যেন একটু বেশি আপন লাগে।
-
-আর কখনো কখনো ‘Kocu’ বললে
-তোমার reaction কল্পনা করেই হাসি পেয়ে যায়। 😌
-</p>
-
-<button onclick="nextPage(2)">
-Next →
-</button>
-
-</div>
-
-</section>
-
-<!-- PAGE 3 -->
-
-<section class="page hidden" id="page3">
-
-<div class="glass">
-
-<h2>A Beautiful Coincidence ✨</h2>
-
-<p>
-৬–৭ মাস খুব বেশি সময় না।
-
-কিন্তু মজার ব্যাপার হলো,
-কিছু মানুষকে চিনতে বছরের প্রয়োজন হয় না।
-
-কখন যে সাধারণ কথাগুলো
-একটু বেশি important হয়ে যায়,
-সেটা হয়তো কেউ বুঝতেও পারে না।
-</p>
-
-<button onclick="nextPage(3)">
-Next →
-</button>
-
-</div>
-
-</section>
-
-<!-- PAGE 4 -->
-
-<section class="page hidden" id="page4">
-
-<div class="glass">
-
-<h2>Things I Have Realised 😂</h2>
-
-<p>
-তোমার সাথে chat করতে আসি...
-
-আর দেখি reels-এর কাছে
-আমি আবারও পরাজিত। 😭😂
-
-তোমার “একটু পরে reply দিচ্ছি”
-আর বাংলাদেশের “আসতেছে”
-প্রায় একই জিনিস।
-</p>
-
-<button onclick="nextPage(4)">
-Next →
-</button>
-
-</div>
-
-</section>
-
-<!-- PAGE 5 -->
-
-<section class="page hidden" id="page5">
-
-<div class="glass">
-
-<h2>A Little Different 🌷</h2>
-
-<p>
-সব বন্ধুত্ব একরকম হয় না।
-
-কিছু মানুষ থাকে,
-যাদের message notification দেখলে
-অজান্তেই মুখে একটু হাসি চলে আসে।
-
-কিছু মানুষকে কিছু না বললেও
-তারা অনেক কিছু বুঝে ফেলে।
-</p>
-
-<button onclick="nextPage(5)">
-Next →
-</button>
-
-</div>
-
-</section>
-
-<!-- PAGE 6 -->
-
-<section class="page hidden" id="page6">
-
-<div class="glass">
-
-<h2>Focus On Your Dreams ✨</h2>
-
-<p>
-এই সময়টা তোমার জন্য গুরুত্বপূর্ণ।
-
-তাই মাঝে মাঝে হারিয়ে গেলেও বুঝি,
-কিছু স্বপ্নের জন্য
-একটু বেশি মনোযোগ দেওয়া দরকার।
-
-তোমার একটা জিনিস ভালো লাগে—
-
-তুমি যা করো,
-মন দিয়ে করার চেষ্টা করো।
-</p>
-
-<button onclick="nextPage(6)">
-Next →
-</button>
-
-</div>
-
-</section>
-
-<!-- PAGE 7 -->
-
-<section class="page hidden" id="page7">
-
-<div class="glass">
-
-<h2>Maybe Someday 🌈</h2>
-
-<p>
-পৃথিবীতে অনেক সুন্দর জায়গা আছে।
-
-কখনো সুযোগ হলে
-কাছের মানুষদের নিয়ে
-সেগুলো দেখতে যাওয়ার ইচ্ছা আছে। ✈️
-
-কখনো হয়তো
-একটা chocolate 🍫
-আর অনেক গল্প
-একটা দিনকে সুন্দর করে দিতে পারে।
-</p>
-
-<button onclick="nextPage(7)">
-Next →
-</button>
-
-</div>
-
-</section>
-
-<!-- PAGE 8 -->
-
-<section class="page hidden" id="page8">
-
-<div class="glass">
-
-<h2>Just A Thought 💌</h2>
-
-<p>
-জীবনে এমন খুব কম মানুষ আসে,
-যাদের সাথে কোনো বিষয় নিয়ে
-দুবার ভাবতে হয় না।
-
-কিছু সম্পর্কের সবচেয়ে সুন্দর দিক হলো,
-সেগুলোকে আলাদা করে
-কোনো নাম দিতে হয় না।
-
-শুধু এটুকু জানলেই হয়—
-
-কথা বললে ভালো লাগে। 🌸
-</p>
-
-<button onclick="nextPage(8)">
-Next →
-</button>
-
-</div>
-
-</section>
-
-<!-- PAGE 9 -->
-
-<section class="page hidden" id="page9">
-
-<div class="glass final-card">
-
-<h2>Before You Leave 🌙</h2>
-
-<p>
-জীবনে অনেক মানুষের সাথে পরিচয় হয়।
-
-কেউ কিছু সময়ের জন্য আসে,
-কেউ স্মৃতি হয়ে থাকে।
-
-আর কিছু মানুষ এমন থাকে,
-যাদের উপস্থিতি ধীরে ধীরে
-দিনের একটা স্বাভাবিক অংশ হয়ে যায়।
-
-✨
-
-৬–৭ মাস হয়তো খুব বড় সময় না,
-তবুও এই সময়টুকুর জন্য
-একটা ছোট্ট ধন্যবাদ।
-</p>
-
-<h3>
-Thank You For Being You, Pritu 💖
-</h3>
-
-<span>
-"Some people become a beautiful part of our days without even trying."
-</span>
-
-</div>
-
-</section>
-
-<script src="script.js"></script>
+    <div class="container">
+        <!-- Section 1: Intro -->
+        <div class="card">
+            <span class="sticker">✨</span>
+            <h1>Farhana Prity</h1>
+            <h2>কখনো প্রীতু, কখনো কচু...</h2>
+            <p>আমাদের গত ৬-৭ মাসের এই পরিচয়টা আমার কাছে অনেক দামী। আপনি আমার শুধু বন্ধুবী নন, আপনি আমার জীবনের সেই ভরসার জায়গা যেখানে আমি নিঃসঙ্কোচে সব শেয়ার করতে পারি।</p>
+        </div>
+
+        <!-- Section 2: Funny/Sad -->
+        <div class="card">
+            <span class="sticker">🙄</span>
+            <h2>একটু রাগ, একটু অভিমান</h2>
+            <p>আপনার ওই <span class="highlight">রিলস দেখা</span> আর আমাকে <span class="highlight">ইগনোর করা</span>—মাঝে মাঝে খুব কষ্ট দেয়। সামনে HSC পরীক্ষা, তবুও আপনার পাগলামি থামে না! কিন্তু জানেন তো? আপনার সব খুঁতগুলোই আমার কাছে আপনাকে 'বেস্ট' করে তোলে।</p>
+        </div>
+
+        <!-- Section 3: The Promise -->
+        <div class="card">
+            <span class="sticker">💍</span>
+            <h2>একটি সুন্দর ভবিষ্যতের স্বপ্ন</h2>
+            <p>আমি চাই আমার প্রতিটি কাজের পাশে আপনি থাকবেন। আল্লাহ সুস্থ রাখলে আমরা দেশ-বিদেশে ঘুরবো, আর আপনার কোনো স্বপ্ন আমি অপূর্ণ রাখবো না। আপনার জন্য প্রতিদিন অনেক অনেক <span class="highlight">চকলেট</span> বরাদ্দ থাকবে! 🍫</p>
+            <p>সারাজীবন এভাবেই পাশে থাকতে চাই।</p>
+            <a href="#" class="btn">পাশে থাকবেন তো? ❤️</a>
+        </div>
+
+        <div class="footer-text">
+            <p>Made with Love for Pritu ✨</p>
+        </div>
+    </div>
 
 </body>
 </html>
