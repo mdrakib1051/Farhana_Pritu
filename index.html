@@ -3,141 +3,356 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For My Special One | Prity</title>
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;500;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <title>For My Dearest | Prity</title>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&family=Playfair+Display:ital,wght@1,600&family=Sacramento&display=swap" rel="stylesheet">
     <style>
         :root {
-            --emerald: #046307;
-            --silver: #E8E8E8;
-            --glass: rgba(255, 255, 255, 0.1);
+            --primary-pink: #ffb7b2;
+            --dark-pink: #ff6b6b;
+            --text-color: #4a4a4a;
+            --gold: #d4af37;
         }
 
         body {
             margin: 0;
             padding: 0;
-            background: radial-gradient(circle, var(--emerald), #023003);
-            color: var(--silver);
+            background-color: var(--primary-pink);
+            color: var(--text-color);
             font-family: 'Hind Siliguri', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
             overflow-x: hidden;
         }
 
         .container {
-            max-width: 600px;
-            margin: 0 auto;
+            width: 100%;
+            max-width: 480px;
+            background: #fff9f6;
+            min-height: 100vh;
+            box-shadow: 0 0 25px rgba(0,0,0,0.1);
+            position: relative;
+            padding-bottom: 50px;
+        }
+
+        /* Screen 1: Secret Code (2nd Video Style) */
+        #auth-screen {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
             padding: 20px;
+            box-sizing: border-box;
             text-align: center;
         }
 
-        /* Glassmorphism Card */
-        .card {
-            background: var(--glass);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 20px;
-            padding: 30px;
-            margin: 40px 0;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-            animation: fadeIn 1.5s ease-out;
+        .secret-title {
+            font-family: 'Sacramento', cursive;
+            font-size: 2.8rem;
+            color: var(--dark-pink);
+            margin-bottom: 20px;
         }
 
-        h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            color: #C0C0C0; /* Diamond Silver */
-            margin-bottom: 10px;
+        .input-box {
+            width: 80%;
+            padding: 15px;
+            border: 2px dashed var(--dark-pink);
+            border-radius: 30px;
+            font-size: 1.2rem;
+            text-align: center;
+            outline: none;
+            background: #fff;
+            color: var(--dark-pink);
         }
 
-        h2 {
-            color: #50C878; /* Emerald Tint */
-            font-weight: 700;
-        }
-
-        p {
-            line-height: 1.8;
-            font-size: 1.1rem;
-        }
-
-        .highlight {
-            color: #FFD700;
-            font-weight: bold;
-        }
-
-        /* Stickers & Animations */
-        .sticker {
-            font-size: 3rem;
-            display: block;
-            margin: 15px 0;
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .btn {
-            background: linear-gradient(45deg, #50C878, #046307);
-            border: none;
+        .btn-enter {
+            background: var(--dark-pink);
             color: white;
-            padding: 15px 30px;
-            border-radius: 50px;
+            border: none;
+            padding: 12px 40px;
+            border-radius: 25px;
             font-size: 1.1rem;
+            margin-top: 25px;
             cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
-            margin-top: 20px;
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
             transition: 0.3s;
         }
 
-        .btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 20px rgba(80, 200, 120, 0.6);
+        .btn-enter:hover {
+            transform: translateY(-2px);
         }
 
-        .footer-text {
+        /* Main Website Content (Hidden initially) */
+        #main-content {
+            display: none;
+        }
+
+        /* Nav Tabs (2nd Video Style) */
+        .nav-tabs {
+            display: flex;
+            justify-content: space-around;
+            background: #fff;
+            padding: 15px 5px;
+            border-bottom: 1px solid #ffe3e2;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .tab-btn {
+            background: none;
+            border: none;
             font-size: 0.9rem;
-            opacity: 0.7;
-            margin-top: 50px;
+            font-weight: 600;
+            color: #888;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+            transition: 0.3s;
+        }
+
+        .tab-btn.active {
+            color: var(--dark-pink);
+        }
+
+        .tab-btn span {
+            font-size: 1.3rem;
+        }
+
+        /* Tab Content Sections */
+        .tab-panel {
+            display: none;
+            padding: 25px;
+            animation: fadeIn 0.6s ease-in-out;
+        }
+
+        .tab-panel.active {
+            display: block;
+        }
+
+        /* Cute Stickers & Bears (1st Video Style) */
+        .bear-container {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .animated-sticker {
+            font-size: 4rem;
+            animation: float 3s ease-in-out infinite;
+            display: inline-block;
+        }
+
+        .letter-box {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            border: 1px solid #ffe3e2;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.02);
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        .letter-title {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            color: var(--dark-pink);
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .highlight {
+            color: var(--dark-pink);
+            font-weight: 700;
+        }
+
+        /* Gallery Grid */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .gallery-item {
+            background: white;
+            border-radius: 12px;
+            padding: 8px;
+            border: 1px solid #ffe3e2;
+            text-align: center;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            border-radius: 8px;
+            display: block;
+        }
+
+        .gallery-caption {
+            font-size: 0.85rem;
+            margin-top: 8px;
+            color: #777;
+        }
+
+        /* Promise List */
+        .promise-card {
+            background: white;
+            border-radius: 15px;
+            padding: 15px 20px;
+            margin-bottom: 15px;
+            border-left: 5px solid var(--dark-pink);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-12px) rotate(3deg); }
+        }
+
+        .interactive-btn {
+            background: linear-gradient(135deg, #ff8b8b, var(--dark-pink));
+            color: white;
+            border: none;
+            width: 100%;
+            padding: 15px;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-top: 20px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(255,107,107,0.3);
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <!-- Section 1: Intro -->
-        <div class="card">
-            <span class="sticker">✨</span>
-            <h1>Farhana Prity</h1>
-            <h2>কখনো প্রীতু, কখনো কচু...</h2>
-            <p>আমাদের গত ৬-৭ মাসের এই পরিচয়টা আমার কাছে অনেক দামী। আপনি আমার শুধু বন্ধুবী নন, আপনি আমার জীবনের সেই ভরসার জায়গা যেখানে আমি নিঃসঙ্কোচে সব শেয়ার করতে পারি।</p>
+        
+        <div id="auth-screen">
+            <h1 class="secret-title">Enter the secret code...</h1>
+            <input type="password" id="secretCode" class="input-box" placeholder="••••••••">
+            <button class="btn-enter" onclick="checkCode()">Enter ✨</button>
+            <p style="margin-top: 20px; font-size: 0.9rem; color: #a58080;">Tip: আপনার ডাকনাম + ১২৩</p>
         </div>
 
-        <!-- Section 2: Funny/Sad -->
-        <div class="card">
-            <span class="sticker">🙄</span>
-            <h2>একটু রাগ, একটু অভিমান</h2>
-            <p>আপনার ওই <span class="highlight">রিলস দেখা</span> আর আমাকে <span class="highlight">ইগনোর করা</span>—মাঝে মাঝে খুব কষ্ট দেয়। সামনে HSC পরীক্ষা, তবুও আপনার পাগলামি থামে না! কিন্তু জানেন তো? আপনার সব খুঁতগুলোই আমার কাছে আপনাকে 'বেস্ট' করে তোলে।</p>
-        </div>
+        <div id="main-content">
+            
+            <nav class="nav-tabs">
+                <button class="tab-btn active" onclick="switchTab('love-letter')">
+                    <span>❤️</span> Love Letter
+                </button>
+                <button class="tab-btn" onclick="switchTab('reality')">
+                    <span>🙄</span> Reality
+                </button>
+                <button class="tab-btn" onclick="switchTab('promises')">
+                    <span>💍</span> Promises
+                </button>
+                <button class="tab-btn" onclick="switchTab('gallery')">
+                    <span>📸</span> Gallery
+                </button>
+            </nav>
 
-        <!-- Section 3: The Promise -->
-        <div class="card">
-            <span class="sticker">💍</span>
-            <h2>একটি সুন্দর ভবিষ্যতের স্বপ্ন</h2>
-            <p>আমি চাই আমার প্রতিটি কাজের পাশে আপনি থাকবেন। আল্লাহ সুস্থ রাখলে আমরা দেশ-বিদেশে ঘুরবো, আর আপনার কোনো স্বপ্ন আমি অপূর্ণ রাখবো না। আপনার জন্য প্রতিদিন অনেক অনেক <span class="highlight">চকলেট</span> বরাদ্দ থাকবে! 🍫</p>
-            <p>সারাজীবন এভাবেই পাশে থাকতে চাই।</p>
-            <a href="#" class="btn">পাশে থাকবেন তো? ❤️</a>
-        </div>
+            <div id="love-letter" class="tab-panel active">
+                <div class="bear-container">
+                    <span class="animated-sticker">🧸💖🐻</span>
+                </div>
+                <div class="letter-box">
+                    <div class="letter-title">My Dearest Farhana Prity,</div>
+                    <p>কখনো প্রীতু, কখনো কচু—কিন্তু আপনি আমার জীবনের সবচেয়ে সুন্দর এক অধ্যায়। আমাদের গত ৬-৭ মাসের এই পরিচয়টা যে আমার কাছে কতটা দামী, সেটা হয়তো মুখে কোনোদিন গুছিয়ে বলা হয়নি।</p>
+                    <p>আপনি আমার শুধু বন্ধুবী নন, আপনি আমার জীবনের সেই একমাত্র মানুষ যার সাথে আমি আমার ছোট-বড় সব খুশি, সব পরিস্থিতি নিঃসঙ্কোচে শেয়ার করতে পারি।</p>
+                </div>
+            </div>
 
-        <div class="footer-text">
-            <p>Made with Love for Pritu ✨</p>
+            <div id="reality" class="tab-panel">
+                <div class="bear-container">
+                    <span class="animated-sticker">🤦‍♂️📱💔</span>
+                </div>
+                <div class="letter-box">
+                    <div class="letter-title" style="color: #666;">একটু রাগ, একটু মিষ্টি ইগনোর</div>
+                    <p>আপনার ওই ঘণ্টার পর ঘণ্টা <span class="highlight">রিলস দেখা</span> আর মাঝে মাঝে আমাকে হঠাৎ করে <span class="highlight">ইগনোর করা</span>—জানেন তো, মনে মনে খুব কষ্ট দেয়! সামনে আপনার HSC পরীক্ষা, তবুও আপনার এই রিলস পাগলামি একটুও কমে না।</p>
+                    <p>কিন্তু সবকিছুর পরেও, অন্যান্য সব বন্ধুদের চেয়ে আপনি আমাকে একটু আলাদা ভাবেন, একটু স্পেশাল মনে করেন—এইটুকুই আমার মুখের হাসির জন্য যথেষ্ট। সব দিক দিয়েই আপনি আমার জন্য বেস্ট!</p>
+                </div>
+            </div>
+
+            <div id="promises" class="tab-panel">
+                <div class="bear-container">
+                    <span class="animated-sticker">🍫✈️💍</span>
+                </div>
+                <h3 style="text-align: center; color: var(--dark-pink);">ভবিষ্যতের কিছু মিষ্টি প্রতিশ্রুতি</h3>
+                
+                <div class="promise-card">
+                    <strong>সব কাজের পাশে আপনাকে রাখা:</strong> আমি আমার জীবনের প্রতিটি পদক্ষেপে, প্রতিটি সাফল্যে আপনাকে সবসময় আমার পাশে দেখতে চাই।
+                </div>
+                <div class="promise-card">
+                    <strong>দেশ-বিদেশ ভ্রমণ:</strong> আল্লাহ যদি আমাদের সুস্থ রাখেন, তবে দুজনে মিলে একসাথে দেশ-বিদেশের সুন্দর সুন্দর জায়গায় ঘুরে বেড়াবো।
+                </div>
+                <div class="promise-card">
+                    <strong>স্বপ্ন পূরণ:</strong> আপনার কোনো ইচ্ছা বা স্বপ্ন আমি কখনো অপূর্ণ রাখতে দেব না, সব দায়িত্ব আমার।
+                </div>
+                <div class="promise-card">
+                    <strong>আনলিমিটেড চকলেট:</strong> আর হ্যাঁ! আপনার জন্য প্রতিদিন থাকবে অনেক অনেক চকলেটের উপহার! 
+                </div>
+
+                <button class="interactive-btn" onclick="alert('ইনশাআল্লাহ্‌! সারাজীবন এভাবেই পাশে থাকবো। ❤️')">সারাজীবন পাশে থাকবেন তো? 🥰</button>
+            </div>
+
+            <div id="gallery" class="tab-panel">
+                <div class="bear-container">
+                    <span class="animated-sticker">🌸✨📸</span>
+                </div>
+                <div class="letter-title">Flowers & Memories For You</div>
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1526047932273-341f2a7631f9?w=400" alt="Flowers">
+                        <div class="gallery-caption">আপনার জন্য প্রথম গোলাপ 🌹</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1561181286-d3fee7d55364?w=400" alt="Tulips">
+                        <div class="gallery-caption">সবচেয়ে কিউট প্রীতু 🌷</div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 
+    <script>
+        // Secret code check function
+        function checkCode() {
+            const codeInput = document.getElementById('secretCode').value;
+            // Password set to: pritu123
+            if(codeInput.toLowerCase() === 'pritu123') {
+                document.getElementById('auth-screen').style.display = 'none';
+                document.getElementById('main-content').style.display = 'block';
+            } else {
+                alert('ভুল কোড! আবার চেষ্টা করুন (ক্লু: সব ছোট হাতের অক্ষরে ডাকনাম + ১২৩)');
+            }
+        }
+
+        // Tab switcher function
+        function switchTab(tabId) {
+            // Remove active classes
+            document.querySelectorAll('.tab-panel').forEach(panel => panel.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            
+            // Add active class to clicked tab
+            document.getElementById(tabId).classList.add('active');
+            
+            // Set nav button active
+            const eventTarget = event.currentTarget;
+            eventTarget.classList.add('active');
+        }
+    </script>
 </body>
 </html>
