@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>For My Dearest | Prity</title>
+    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&family=Playfair+Display:ital,wght@1,600&family=Sacramento&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary-pink: #ffb7b2;
             --dark-pink: #ff6b6b;
             --text-color: #4a4a4a;
-            --gold: #d4af37;
         }
 
         body {
@@ -36,7 +36,7 @@
             padding-bottom: 50px;
         }
 
-        /* Screen 1: Secret Code (2nd Video Style) */
+        /* Screen 1: Secret Code */
         #auth-screen {
             display: flex;
             flex-direction: column;
@@ -80,16 +80,12 @@
             transition: 0.3s;
         }
 
-        .btn-enter:hover {
-            transform: translateY(-2px);
-        }
-
-        /* Main Website Content (Hidden initially) */
+        /* Main Website Content */
         #main-content {
             display: none;
         }
 
-        /* Nav Tabs (2nd Video Style) */
+        /* Nav Tabs */
         .nav-tabs {
             display: flex;
             justify-content: space-around;
@@ -127,14 +123,12 @@
         .tab-panel {
             display: none;
             padding: 25px;
-            animation: fadeIn 0.6s ease-in-out;
         }
 
         .tab-panel.active {
             display: block;
         }
 
-        /* Cute Stickers & Bears (1st Video Style) */
         .bear-container {
             display: flex;
             justify-content: center;
@@ -153,8 +147,8 @@
             padding: 25px;
             border: 1px solid #ffe3e2;
             box-shadow: 0 10px 20px rgba(0,0,0,0.02);
-            line-height: 1.8;
-            font-size: 1.05rem;
+            font-size: 1.1rem;
+            min-height: 150px;
         }
 
         .letter-title {
@@ -166,37 +160,50 @@
             text-align: center;
         }
 
-        .highlight {
+        /* Letter-by-letter typing styles */
+        .typing-text {
+            line-height: 1.8;
+            white-space: pre-line;
+        }
+
+        .typing-text::after {
+            content: '|';
+            animation: blink 0.7s infinite;
             color: var(--dark-pink);
-            font-weight: 700;
+        }
+
+        @keyframes blink {
+            50% { opacity: 0; }
         }
 
         /* Gallery Grid */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
+            gap: 12px;
             margin-top: 15px;
         }
 
         .gallery-item {
             background: white;
             border-radius: 12px;
-            padding: 8px;
+            padding: 6px;
             border: 1px solid #ffe3e2;
             text-align: center;
         }
 
         .gallery-item img {
             width: 100%;
+            height: 140px;
+            object-fit: cover;
             border-radius: 8px;
-            display: block;
         }
 
         .gallery-caption {
-            font-size: 0.85rem;
-            margin-top: 8px;
-            color: #777;
+            font-size: 0.8rem;
+            margin-top: 5px;
+            color: #666;
+            font-weight: 600;
         }
 
         /* Promise List */
@@ -207,12 +214,8 @@
             margin-bottom: 15px;
             border-left: 5px solid var(--dark-pink);
             box-shadow: 0 4px 10px rgba(0,0,0,0.02);
-        }
-
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+            font-size: 1.05rem;
+            line-height: 1.6;
         }
 
         @keyframes float {
@@ -239,87 +242,108 @@
 
     <div class="container">
         
+        <!-- SCREEN 1: SECRET CODE -->
         <div id="auth-screen">
             <h1 class="secret-title">Enter the secret code...</h1>
             <input type="password" id="secretCode" class="input-box" placeholder="••••••••">
             <button class="btn-enter" onclick="checkCode()">Enter ✨</button>
-            <p style="margin-top: 20px; font-size: 0.9rem; color: #a58080;">Tip: আপনার ডাকনাম + ১২৩</p>
+            <p style="margin-top: 20px; font-size: 0.9rem; color: #a58080;">ক্লু: তোমার ডাকনাম (ছোট হাতের) + ১২৩</p>
         </div>
 
+        <!-- SCREEN 2: MAIN WEBSITE CONTENT -->
         <div id="main-content">
             
+            <!-- Navigation Tabs -->
             <nav class="nav-tabs">
                 <button class="tab-btn active" onclick="switchTab('love-letter')">
-                    <span>❤️</span> Love Letter
+                    <span>🎁</span> আজব বাক্স
                 </button>
                 <button class="tab-btn" onclick="switchTab('reality')">
-                    <span>🙄</span> Reality
+                    <span>🙄</span> একটু আড়াল
                 </button>
                 <button class="tab-btn" onclick="switchTab('promises')">
-                    <span>💍</span> Promises
+                    <span>💍</span> মেঘের খাম
                 </button>
                 <button class="tab-btn" onclick="switchTab('gallery')">
-                    <span>📸</span> Gallery
+                    <span>🍫</span> পছন্দের ঝুড়ি
                 </button>
             </nav>
 
+            <!-- Tab 1: Today's Mystery Box (Indirect Thoughts) -->
             <div id="love-letter" class="tab-panel active">
                 <div class="bear-container">
-                    <span class="animated-sticker">🧸💖🐻</span>
+                    <span class="animated-sticker">🧸✨🐻</span>
                 </div>
                 <div class="letter-box">
-                    <div class="letter-title">My Dearest Farhana Prity,</div>
-                    <p>কখনো প্রীতু, কখনো কচু—কিন্তু আপনি আমার জীবনের সবচেয়ে সুন্দর এক অধ্যায়। আমাদের গত ৬-৭ মাসের এই পরিচয়টা যে আমার কাছে কতটা দামী, সেটা হয়তো মুখে কোনোদিন গুছিয়ে বলা হয়নি।</p>
-                    <p>আপনি আমার শুধু বন্ধুবী নন, আপনি আমার জীবনের সেই একমাত্র মানুষ যার সাথে আমি আমার ছোট-বড় সব খুশি, সব পরিস্থিতি নিঃসঙ্কোচে শেয়ার করতে পারি।</p>
+                    <div class="letter-title">Hey Pritu...</div>
+                    <div id="text-box-1" class="typing-text"></div>
                 </div>
             </div>
 
+            <!-- Tab 2: Reality Check (Indirect/Sweet Tone) -->
             <div id="reality" class="tab-panel">
                 <div class="bear-container">
-                    <span class="animated-sticker">🤦‍♂️📱💔</span>
+                    <span class="animated-sticker">🤦‍♂️📱🌸</span>
                 </div>
                 <div class="letter-box">
-                    <div class="letter-title" style="color: #666;">একটু রাগ, একটু মিষ্টি ইগনোর</div>
-                    <p>আপনার ওই ঘণ্টার পর ঘণ্টা <span class="highlight">রিলস দেখা</span> আর মাঝে মাঝে আমাকে হঠাৎ করে <span class="highlight">ইগনোর করা</span>—জানেন তো, মনে মনে খুব কষ্ট দেয়! সামনে আপনার HSC পরীক্ষা, তবুও আপনার এই রিলস পাগলামি একটুও কমে না।</p>
-                    <p>কিন্তু সবকিছুর পরেও, অন্যান্য সব বন্ধুদের চেয়ে আপনি আমাকে একটু আলাদা ভাবেন, একটু স্পেশাল মনে করেন—এইটুকুই আমার মুখের হাসির জন্য যথেষ্ট। সব দিক দিয়েই আপনি আমার জন্য বেস্ট!</p>
+                    <div class="letter-title" style="color: #666;">অভিমানের কিছু গল্প</div>
+                    <div id="text-box-2" class="typing-text"></div>
                 </div>
             </div>
 
+            <!-- Tab 3: Promises (Indirectly Spoken Dreams) -->
             <div id="promises" class="tab-panel">
                 <div class="bear-container">
-                    <span class="animated-sticker">🍫✈️💍</span>
+                    <span class="animated-sticker">☁️✈️🌟</span>
                 </div>
-                <h3 style="text-align: center; color: var(--dark-pink);">ভবিষ্যতের কিছু মিষ্টি প্রতিশ্রুতি</h3>
+                <h3 style="text-align: center; color: var(--dark-pink); font-family: 'Playfair Display', serif; font-style: italic;">কিছু রূপকথা, কিছু সত্যি...</h3>
                 
                 <div class="promise-card">
-                    <strong>সব কাজের পাশে আপনাকে রাখা:</strong> আমি আমার জীবনের প্রতিটি পদক্ষেপে, প্রতিটি সাফল্যে আপনাকে সবসময় আমার পাশে দেখতে চাই।
+                    ✨ ইচ্ছে আছে, জীবনের ব্যস্ততম কোলাহলেও সবচেয়ে নিরাপদ আশ্রয়টা যেন শুধু তোমাকেই করে রাখতে পারি।
                 </div>
                 <div class="promise-card">
-                    <strong>দেশ-বিদেশ ভ্রমণ:</strong> আল্লাহ যদি আমাদের সুস্থ রাখেন, তবে দুজনে মিলে একসাথে দেশ-বিদেশের সুন্দর সুন্দর জায়গায় ঘুরে বেড়াবো।
+                    ✈️ যদি কখনো মন খারাপের মেঘ জমে, তবে ডানা মেলে দুজনে মিলে পৃথিবীর সীমানা পেরিয়ে নতুন কোনো শহরে হারিয়ে যাবো।
                 </div>
                 <div class="promise-card">
-                    <strong>স্বপ্ন পূরণ:</strong> আপনার কোনো ইচ্ছা বা স্বপ্ন আমি কখনো অপূর্ণ রাখতে দেব না, সব দায়িত্ব আমার।
+                    🍦 তোমার চোখের কোনো লুকানো স্বপ্নই যেন মেঘের আড়ালে হারিয়ে না যায়, প্রতিটি আবদার আলতো করে ছুঁয়ে দেওয়ার দায়িত্বটা আমার।
                 </div>
                 <div class="promise-card">
-                    <strong>আনলিমিটেড চকলেট:</strong> আর হ্যাঁ! আপনার জন্য প্রতিদিন থাকবে অনেক অনেক চকলেটের উপহার! 
+                    🍫 আর হ্যাঁ, মিষ্টি হাসির আড়ালে লুকিয়ে থাকা চকলেটের ওই অফুরন্ত লোভটা রোজ পূরণ করার নিয়মটা নাহয় আমিই বানিয়ে নেব।
                 </div>
 
-                <button class="interactive-btn" onclick="alert('ইনশাআল্লাহ্‌! সারাজীবন এভাবেই পাশে থাকবো। ❤️')">সারাজীবন পাশে থাকবেন তো? 🥰</button>
+                <button class="interactive-btn" onclick="alert('ইনশাআল্লাহ্‌! মেঘের খামে এই গল্পটা জমা রইলো। ❤️')">গল্পের শেষ পাতা পর্যন্ত থাকবে তো? 🥰</button>
             </div>
 
+            <!-- Tab 4: Favorite Gallery (Flowers, Ice Cream, Chocolates) -->
             <div id="gallery" class="tab-panel">
                 <div class="bear-container">
-                    <span class="animated-sticker">🌸✨📸</span>
+                    <span class="animated-sticker">🌹🍦🍫</span>
                 </div>
-                <div class="letter-title">Flowers & Memories For You</div>
+                <div class="letter-title">Your Favorite Essentials</div>
                 <div class="gallery-grid">
                     <div class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1526047932273-341f2a7631f9?w=400" alt="Flowers">
-                        <div class="gallery-caption">আপনার জন্য প্রথম গোলাপ 🌹</div>
+                        <img src="https://images.unsplash.com/photo-1561181286-d3fee7d55364?w=400" alt="Tulips">
+                        <div class="gallery-caption">স্নিগ্ধ টিউলিপ 🌷</div>
                     </div>
                     <div class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1561181286-d3fee7d55364?w=400" alt="Tulips">
-                        <div class="gallery-caption">সবচেয়ে কিউট প্রীতু 🌷</div>
+                        <img src="https://images.unsplash.com/photo-1526047932273-341f2a7631f9?w=400" alt="Roses">
+                        <div class="gallery-caption">এক গুচ্ছ মায়া 🌹</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=400" alt="Ice Cream">
+                        <div class="gallery-caption">ঠাণ্ডা মিষ্টি স্কুপ 🍦</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=400" alt="Ice cream cone">
+                        <div class="gallery-caption">ক্রিমি কোন 🍨</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1548907040-4baa42d10919?w=400" alt="Chocolates">
+                        <div class="gallery-caption">ডার্ক ডেলিশিয়াস 🍫</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1511381939415-e44015466834?w=400" alt="Chocolate box">
+                        <div class="gallery-caption">খুশির বাক্স 🎁</div>
                     </div>
                 </div>
             </div>
@@ -327,31 +351,52 @@
         </div>
     </div>
 
+    <!-- JavaScript for Letter-by-Letter and Interactions -->
     <script>
-        // Secret code check function
+        // Indirect texts to type letter by letter
+        const textSection1 = "কখনো কখনো কিছু মানুষের সাথে কাটানো অল্প একটু সময়ও মনে হয় বছরের পর বছর চেনা। এই যে গত কয়েকটা মাস কেটে গেল, মনে হয় আমার জীবনের খুব সুন্দর একটা উপহার তুমি।\n\nকিছু কথা সরাসরি বলা হয়ে ওঠে না, কিন্তু আমার চারপাশের সব গল্পে, সব ভাবনায় কেমন যেন আলতো করে তোমার নামটাই জড়িয়ে থাকে। তুমি আমার সেই একটা মানুষ, যাকে কোনো কারণ ছাড়াই বিশ্বাস করা যায়।";
+        
+        const textSection2 = "মাঝে মাঝে যখন তোমার ওই ভার্চুয়াল দুনিয়ার রিলসের ভিড়ে আমি একটু আড়ালে চলে যাই, কিংবা হঠাৎ কোনো এক অজানা কারণে তুমি কিছুটা চুপ হয়ে যাও—তখন আকাশটা কেমন যেন মেঘলা দেখায়।\n\nসামনে তোমার এত বড় একটা পরীক্ষা, অথচ তোমার ওই মিষ্টি পাগলামিগুলো একটুও কমে না! কিন্তু ঠিক জানি, শত মানুষের ভিড়েও তোমার মনের ওই কোণের বিশেষ জায়গাটা শুধু আমার কথাই বলে। দিনশেষে তোমার এই সুন্দর মনটাই আমার কাছে সবচেয়ে সেরা।";
+
         function checkCode() {
             const codeInput = document.getElementById('secretCode').value;
-            // Password set to: pritu123
             if(codeInput.toLowerCase() === 'pritu123') {
                 document.getElementById('auth-screen').style.display = 'none';
                 document.getElementById('main-content').style.display = 'block';
+                // Start typing the first section text automatically upon entering
+                typeWriter('text-box-1', textSection1, 0, 45);
             } else {
-                alert('ভুল কোড! আবার চেষ্টা করুন (ক্লু: সব ছোট হাতের অক্ষরে ডাকনাম + ১২৩)');
+                alert('ভুল কোড! আবার চেষ্টা করো (যেমন: pritu123)');
             }
         }
 
-        // Tab switcher function
+        // Letter by letter typing logic
+        function typeWriter(elementId, text, index, speed) {
+            const element = document.getElementById(elementId);
+            if (index < text.length) {
+                element.innerHTML += text.charAt(index);
+                setTimeout(() => {
+                    typeWriter(elementId, text, index + 1, speed);
+                }, speed);
+            }
+        }
+
+        // Tab switcher with fresh typing triggers
         function switchTab(tabId) {
-            // Remove active classes
             document.querySelectorAll('.tab-panel').forEach(panel => panel.classList.remove('active'));
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
             
-            // Add active class to clicked tab
             document.getElementById(tabId).classList.add('active');
-            
-            // Set nav button active
-            const eventTarget = event.currentTarget;
-            eventTarget.classList.add('active');
+            event.currentTarget.classList.add('active');
+
+            // Trigger typing effect conditionally so it restarts elegantly when clicked
+            if (tabId === 'love-letter') {
+                document.getElementById('text-box-1').innerHTML = "";
+                typeWriter('text-box-1', textSection1, 0, 45);
+            } else if (tabId === 'reality') {
+                document.getElementById('text-box-2').innerHTML = "";
+                typeWriter('text-box-2', textSection2, 0, 45);
+            }
         }
     </script>
 </body>
